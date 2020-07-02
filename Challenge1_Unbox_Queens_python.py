@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 import random
-# Create initial population elements
 
-## starting with a default of 4 X 4 board to place 4 Queens
+# Create initial population elements
+## Default of placing 8 queens in a 8 X 8 board
 queensCount = 8   ## number of queens and chess Matrix
 nCount = 1000  ## n Population count
 
@@ -25,7 +25,6 @@ def scoreColumn(nPop,score):
     for n in range(nCount):
         tmpScore = 0
         for q in range(queensCount):            
-            #print("Score Col - " + str(n) + " -- " + str(q))
             tmpScore = tmpScore + (nPop[n][q].sum() ** 3)
         score.loc[n][1] = tmpScore
 
@@ -132,7 +131,6 @@ def createOffsprings(parents):
 
 
 ## function to combine Parents and Offsprings
-
 def createNewPop(nextPop,parents, child):
     for p in parents:
         nextPop.append(p)
@@ -222,7 +220,6 @@ while result == "None":
     child = []
     child = createOffsprings(parents)
     
-
     # Create new set of Population    
     nextPop = []
     nextPop = createNewPop(nextPop,parents, child)
